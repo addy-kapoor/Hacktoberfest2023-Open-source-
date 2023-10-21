@@ -1,0 +1,28 @@
+class Solution {
+	/* This is the Meeting class definition
+	class Meeting {
+		public int start;
+		public int end;
+		public Meeting(int start, int end) {
+			this.start = start;
+			this.end = end;
+		}
+	}
+	*/
+	int getMaxMeetings(Meeting[] meetings) {
+		// add your logic here
+		Arrays.sort(meetings, (a, b) -> a.end - b.end);
+		int prev = 0;
+		int cnt  = 1;
+		for(int i = 1 ; i < meetings.length ; i++)
+		{
+			if(meetings[i].start >= meetings[prev].end)
+			{
+				cnt++;
+				prev = i;
+			}
+			
+		}
+		return cnt;
+	}
+}
